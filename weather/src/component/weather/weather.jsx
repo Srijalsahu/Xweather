@@ -34,8 +34,9 @@ const Weather = () => {
         placeholder="Enter city name"
         value={city}
         onChange={(e) => setCity(e.target.value)}
+        className={styles.input}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} className={styles.button}>Search</button>
       
       {loading && <p className={styles.loading}>Loading data...</p>}
       

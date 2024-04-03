@@ -1,4 +1,12 @@
-.weatherCards {
+.input {
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    margin-bottom: 10px;
+  }
+  
+  .weatherCards {
     display: flex;
     flex-wrap: wrap;
   }
