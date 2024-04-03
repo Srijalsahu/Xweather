@@ -5,11 +5,13 @@ const Weather = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const API_KEY = "a3efb1aa2cca4757927131717240304";
 
   const handleSearch = () => {
     setLoading(true);
+    setError('');
     fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`)
       .then(response => {
         if (!response.ok) {
@@ -22,7 +24,7 @@ const Weather = () => {
         setLoading(false);
       })
       .catch(error => {
-        alert(error.message);
+        setError(error.message);
         setLoading(false);
       });
   };
@@ -39,6 +41,7 @@ const Weather = () => {
       <button onClick={handleSearch} className={styles.button}>Search</button>
       
       {loading && <p className={styles.loading}>Loading data...</p>}
+      {error && <p className={styles.error}>{error}</p>}
       
       {weatherData && (
         <div className={styles.weatherCards}>
